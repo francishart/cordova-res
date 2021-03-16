@@ -1,4 +1,4 @@
-import { ResourceType } from './resources';
+import type { ResourceType } from './resources';
 
 export const enum ValidationErrorCode {
   BAD_IMAGE_FORMAT = 'BAD_IMAGE_FORMAT',
@@ -10,7 +10,7 @@ export interface BadImageFormatValidationErrorDetails {
   type: ResourceType;
   code: ValidationErrorCode.BAD_IMAGE_FORMAT;
   format: string | undefined;
-  requiredFormats: ReadonlyArray<string>;
+  requiredFormats: readonly string[];
 }
 
 export interface BadImageSizeValidationErrorDetails {
@@ -23,10 +23,9 @@ export interface BadImageSizeValidationErrorDetails {
   requiredHeight: number;
 }
 
-export type ValidationErrorDetails = (
-  BadImageFormatValidationErrorDetails |
-  BadImageSizeValidationErrorDetails
-);
+export type ValidationErrorDetails =
+  | BadImageFormatValidationErrorDetails
+  | BadImageSizeValidationErrorDetails;
 
 export abstract class BaseError extends Error {
   abstract readonly name: string;
@@ -34,15 +33,15 @@ export abstract class BaseError extends Error {
 
   constructor(readonly message: string) {
     super(message);
-    this.stack = (new Error()).stack || '';
+    this.stack = new Error().stack || '';
     this.message = message;
   }
 
-  toString() {
+  toString(): string {
     return this.message;
   }
 
-  toJSON(): { [key: string]: any; } {
+  toJSON(): { [key: string]: any } {
     return {
       code: this.code,
       message: this.message,
@@ -59,11 +58,14 @@ export class ValidationError extends BaseError {
   readonly name = 'ValidationError';
   readonly code = 'BAD_SOURCE';
 
-  constructor(readonly message: string, readonly details: ValidationErrorDetails) {
+  constructor(
+    readonly message: string,
+    readonly details: ValidationErrorDetails,
+  ) {
     super(message);
   }
 
-  toJSON() {
+  toJSON(): { [key: string]: any } {
     return { ...super.toJSON(), details: this.details };
   }
 }
@@ -72,11 +74,14 @@ export class ResolveSourceImageError extends BaseError {
   readonly name = 'ResolveSourceImageError';
   readonly code = 'BAD_SOURCES';
 
-  constructor(readonly message: string, readonly errors: ReadonlyArray<ValidationError>) {
+  constructor(
+    readonly message: string,
+    readonly errors: readonly ValidationError[],
+  ) {
     super(message);
   }
 
-  toJSON() {
+  toJSON(): { [key: string]: any } {
     return { ...super.toJSON(), sourceErrors: this.errors };
   }
 }

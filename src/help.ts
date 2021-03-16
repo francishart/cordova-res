@@ -1,5 +1,11 @@
+import {
+  DEFAULT_FIT,
+  DEFAULT_POSITION,
+  DEFAULT_RESOURCES_DIRECTORY,
+} from './cli';
+
 const help = `
-  Usage: cordova-res [ios|android] [options]
+  Usage: cordova-res [ios|android|windows] [options]
 
     Generate Cordova resources for native platforms.
 
@@ -27,18 +33,28 @@ const help = `
   Options:
 
     --type <icon|splash|adaptive-icon> ... Only generate one type of resource
-    --resources <path> ................... Use specified directory as resources directory
+    --resources <path> ................... Use a different resources directory (default: '${DEFAULT_RESOURCES_DIRECTORY}')
+    --skip-config ........................ Skip reading/writing to 'config.xml'
 
     --icon-source <path> ................. Use specified file for icon source image
     --splash-source <path> ............... Use specified file for splash source image
     --icon-foreground-source <path> ...... Use file for foreground of adaptive icon
     --icon-background-source <path|hex> .. Use file or color for background of adaptive icon
 
+    --fit <cover|contain|fill> ........... Specify how to fit the image when resizing (default: '${DEFAULT_FIT}')
+    --position <position> ................ Specify how to position the image when resizing (default: '${DEFAULT_POSITION}')
+                                           (positions: 'center', 'top', 'right top', 'right', 'right bottom',
+                                                       'bottom', 'left bottom', 'left', 'left top')
+
+    --copy ............................... Copy generated resources to native projects
+    --ios-project <path> ................. Use specified directory for iOS native project (default: 'ios')
+    --android-project <path> ............. Use specified directory for Android native project (default: 'android')
+
     -h, --help ........................... Print help for the platform, then quit
-    --version ............................ Print version, then quit
+    -v, --version ........................ Print version, then quit
     --verbose ............................ Print verbose output to stderr
 `;
 
-export async function run() {
+export async function run(): Promise<void> {
   process.stdout.write(`${help}\n`);
 }
