@@ -41,6 +41,7 @@ import {
   IOS_83_5_PT_2X_ICON,
   IOS_1024_ICON,
   IOS_2X_UNIVERSAL_ANYANY_SPLASH,
+  IOS_2X_IPHONE_ANYANY_SPLASH
 } from './resources';
 
 export interface NativeProjectConfig {
@@ -185,6 +186,21 @@ const IOS_SPLASHES: readonly NativeResource[] = [
     type: NativeResourceType.IOS_SPLASH,
     source: IOS_2X_UNIVERSAL_ANYANY_SPLASH.src,
     target: 'splash-2732x2732-2.png',
+  },
+  {
+    type: NativeResourceType.IOS_SPLASH,
+    source: IOS_2X_IPHONE_ANYANY_SPLASH.src,
+    target: 'splash-1334x1334.png',
+  },
+  {
+    type: NativeResourceType.IOS_SPLASH,
+    source: IOS_2X_IPHONE_ANYANY_SPLASH.src,
+    target: 'splash-1334x1334-1.png',
+  },
+  {
+    type: NativeResourceType.IOS_SPLASH,
+    source: IOS_2X_IPHONE_ANYANY_SPLASH.src,
+    target: 'splash-1334x1334-2.png',
   },
 ];
 

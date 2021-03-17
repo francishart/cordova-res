@@ -1642,6 +1642,17 @@ export const IOS_2X_UNIVERSAL_ANYANY_SPLASH: IOSSplashResourceConfig = {
   scale: 2,
 };
 
+export const IOS_2X_IPHONE_ANYANY_SPLASH: IOSSplashResourceConfig = {
+  platform: Platform.IOS,
+  type: ResourceType.SPLASH,
+  src: 'Default@2x~iphone~anyany.png',
+  format: Format.PNG,
+  width: 1334,
+  height: 1334,
+  orientation: Orientation.PORTRAIT,
+  scale: 2,
+};
+
 export const IOS_SPLASH_RESOURCES: readonly IOSSplashResourceConfig[] = [
   IOS_568H_2X_IPHONE_SPLASH,
   IOS_667H_SPLASH,
@@ -1662,4 +1673,5 @@ export const IOS_SPLASH_RESOURCES: readonly IOSSplashResourceConfig[] = [
   IOS_2X_IPHONE_SPLASH,
   IOS_IPHONE_SPLASH,
   IOS_2X_UNIVERSAL_ANYANY_SPLASH,
+  IOS_2X_IPHONE_ANYANY_SPLASH,
 ];
