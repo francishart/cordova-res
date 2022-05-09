@@ -1,4 +1,6 @@
-# Resource Generator
+# Capacitor Assets (formerly cordova-res)
+
+*Note: Capacitor Assets isn't quite ready for use. For now, continue to use `cordova-res` as shown below. We will have an update once the new version of this tool is ready.*
 
 This tool will crop and resize JPEG and PNG source images to generate icons and splash screens for modern iOS, Android, and Windows. `cordova-res` was developed for use with Cordova, but Capacitor and other native runtimes are supported.
 
@@ -14,6 +16,9 @@ $ npm install -g cordova-res
 
 ```
 resources/
+├── android
+|   ├── icon-background.png
+|   └── icon-foreground.png
 ├── icon.png
 └── splash.png
 config.xml
