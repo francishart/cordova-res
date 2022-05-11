@@ -128,3 +128,7 @@ await run(options);
 
 - Icons: https://cordova.apache.org/docs/en/latest/config_ref/images.html
 - Splash Screens: https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-splashscreen/
+
+### Packaging
+
+Install Typescript globally with `npm install -g typescript`, then run `npm run build` and finally `npm pack`. Upload this as a release with an apropriate tag, and use the link to the tar file for the cordova plugin install.
